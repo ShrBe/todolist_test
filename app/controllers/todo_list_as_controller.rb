@@ -4,7 +4,7 @@ class TodoListAsController < ApplicationController
   end
 
   def show
-    @todo_lists = TodoListA.find(params[:id])
+    @todo_list = TodoListA.find(params[:id])
   end
 
   def new
@@ -24,12 +24,27 @@ class TodoListAsController < ApplicationController
   end
 
   def edit
+    @todo_list = TodoListA.find(params[:id])
   end
 
   def update
+    @todo_list = TodoListA.find(params[:id])
+    
+    if @todo_list.update(todo_list_params)
+      flash[:success] = '正常更新！'
+      redirect_to @todo_list
+    else
+      flash.now[:danger] = '更新失敗した！'
+      render :edit
+    end
   end
 
   def destroy
+    @todo_list = TodoListA.find(params[:id])
+    @todo_list.destroy
+    
+    flash[:success] = 'タスクは正常に削除されました'
+    redirect_to todo_list_as_url
   end
   
   private

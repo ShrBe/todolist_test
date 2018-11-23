@@ -1,5 +1,7 @@
-<h1>id: <%= @todo_lists.id %> のタスク詳細ページ</h1>
+<h1>id: <%= @todo_list.id %> のタスク詳細ページ</h1>
 
-<p><%= @todo_lists.content %></p>
+<p><%= @todo_list.content %></p>
 
 <%= link_to '一覧に戻る', todo_list_as_path %>
+<%= link_to '編集', edit_todo_list_a_path(@todo_list) %>
+<%= link_to '削除', @todo_list, method: :delete, data: { confirm: '消しちゃうけどよいの？' } %>
