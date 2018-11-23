@@ -1,0 +1,9 @@
+<h1>todoリスト一覧</h1>
+
+<ul>
+  <% @todo_lists.each do |list| %>
+    <li><%= link_to list.id, list %>: <%= list.content %></li>
+  <% end %>
+</ul>
+
+<%= link_to '新規タスクの登録', new_todo_list_a_path %>
