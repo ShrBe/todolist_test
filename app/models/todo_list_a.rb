@@ -1,0 +1,2 @@
+class TodoListA < ApplicationRecord
+end
